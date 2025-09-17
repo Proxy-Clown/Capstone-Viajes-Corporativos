@@ -2,6 +2,11 @@
 
 ## 0) Requisitos rápidos
 ```bash
+git init                    #iniciar git
+git clone <url>             #el <url> se reemplaza por la url del repo
+
+---
+
 git status                 # ve tu estado
 git add .                  # agrega cambios
 git commit -m "mensaje"    # crea el commit ej: en "mensaje" colocar "ADD: creación de la pantalla 2"
@@ -11,10 +16,20 @@ git commit -m "mensaje"    # crea el commit ej: en "mensaje" colocar "ADD: creac
 
 ## 1) Subir **a main**
 ```bash
-git checkout main
-git pull --rebase origin main    # trae lo último de GitHub
-git push -u origin main             # sube tus commits
+git branch                  # Verifica en que branch estas
+git checkout main    #Si no estás en la branch correcta, cámbiate a ella
+git add .          # (el . agrega todos los archivos modificados).
+git commit -m "Tu mensaje descriptivo del cambio"
+git push origin main
+---
+git pull origin nombre-de-la-branch #traer lo último del repo
+--- 
+#Si prefieres que te actualice sin hacer merge automático (solo bajando los cambios para revisarlos), puedes usar:
+git fetch origin
+git checkout nombre-de-la-branch
+git merge origin/nombre-de-la-branch
 ```
+
 
 ---
 
