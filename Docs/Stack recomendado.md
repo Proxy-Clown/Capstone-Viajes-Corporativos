@@ -4,13 +4,12 @@
 
 **Front-end**
 
+* React con Tailwind (SPA).
 * Next.js (App Router) + TypeScript
 * UI: Tailwind CSS + shadcn/ui + lucide-react
 * Estado: TanStack Query (server-state) + Zustand (UI state)
 * Forms: React Hook Form + Zod
-* Tabla/Grids: TanStack Table
-* i18n: next-intl
-* PWA: next-pwa (para uso móvil offline básico)
+
 
 **Back-end**
 

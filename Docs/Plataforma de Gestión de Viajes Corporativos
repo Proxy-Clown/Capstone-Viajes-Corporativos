@@ -2,6 +2,8 @@
 <!-- Idea general para comenzar a armar el proyecto -->
 
 
+El proyecto estará levantado bajo el dominio de "https://proxyportfolio.space/", mientras que el host estará en BanaHost, donde se subirán los últimos cambios del proyecto y se mantendrán actualizados para visualizar durante todo el día, permitiendo también integrar una BDD MySQL, y facilitando el desarrollo del proyecto, así mismo mostrar avances en tiempo real.
+
  **Roles**
 
 1. **Empleado Viajero**
@@ -63,7 +65,7 @@
 * **Extras para destacar:**
 
   * Docker + despliegue en AWS/Azure.
-  * Módulo de auditoría (logs de aprobaciones/rechazos).
+  * Módulo de auditoría (logs de aprobaciones/rechazos/pendientes).
   * Exportación de reportes PDF/Excel.
 
 ---

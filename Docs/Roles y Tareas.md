@@ -60,6 +60,6 @@
 
 **6. Administrador del Sistema TI**
 
-    *Alta/baja de usuarios, roles, parámetros, integraciones.
+    * Alta/baja de usuarios, roles, parámetros, integraciones.
     * Monitoreo y operación (logs, alertas, permisos).
 
