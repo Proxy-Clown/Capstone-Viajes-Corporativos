@@ -132,11 +132,7 @@ export function SoliuserForm({
                                             {...field}
                                             type="test2"
                                         />
-                                        <input
-                                         placeholder="..."
-                                         {...field}
-                                         type="test1"
-                                        />
+                                        
                                     </FormControl>
                                    
                                 </FormItem>   
