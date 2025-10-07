@@ -1,6 +1,6 @@
 "use server";
+import {auth} from "@/src/lib/auth"
 
-import {auth} from "@/lib/auth";
 
 export const signIn = async(email: string, password: string) => {
    try {

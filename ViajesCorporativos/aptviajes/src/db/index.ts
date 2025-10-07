@@ -1,14 +1,8 @@
-import {drizzle} from 'drizzle-orm/mysql2';
-import mysql from "mysql2/promise";
+import {drizzle} from 'drizzle-orm/better-sqlite3';
+import Database from 'better-sqlite3';
+import {user,session,account,verification} from "@/src/db/schema"
 
-
-const poolConnection= mysql.createPool({
-    host: "50.31.176.194",
-    user:"",
-    database:"",
-    password:""
-})
-
-const db = drizzle(poolConnection)
-export {db};
-
+const sqlite = new Database('sqlite.db');
+export const db = drizzle(sqlite,{
+schema: {user,session,account,verification}
+});

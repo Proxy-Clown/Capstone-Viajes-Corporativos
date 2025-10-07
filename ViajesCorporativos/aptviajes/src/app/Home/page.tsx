@@ -9,7 +9,7 @@ export default function ColaboradorPanel() {
           <div className="brand" aria-label="Marca">
             <span className="dot" aria-hidden="true"></span>
             <div>
-              Sistema de Gestión de Viajes Corporativos
+              Sistema de Gestión de Viajes Corporativos - NeoTravelFlow
               <small className="muted" style={{ display: "block", marginTop: "-2px" }}>
                 Panel del Colaborador (usuario que viaja)
               </small>
@@ -21,10 +21,10 @@ export default function ColaboradorPanel() {
           </div>
           <div className="user" aria-label="Usuario">
             <div>
-              <strong>Catalina S.</strong>
-              <small>Colaboradora</small>
+              <strong>Usuario</strong>
+              <small>Colaborador</small>
             </div>
-            <div className="avatar" aria-hidden="true">CS</div>
+            <div className="avatar" aria-hidden="true">U</div>
           </div>
         </header>
 

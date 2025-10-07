@@ -3,15 +3,15 @@
 import { zodResolver} from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
+} from "./ui/card"
+import { Input } from "./ui/input"
 import{
   Form,
   FormControl,
@@ -19,7 +19,7 @@ import{
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
+} from "./ui/form"
 import { signIn } from "@/server/users"
 
 import {z} from "zod"
@@ -53,8 +53,6 @@ export function LoginForm({
     } else{
       toast.error(message as string);
     }
-    
-    
   }
 
   return (
@@ -62,8 +60,9 @@ export function LoginForm({
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Bienvenido</CardTitle>
+          <CardTitle className="text-xl">NeoTravelFlow</CardTitle>
           <CardDescription>
-            Ingresa con la cuenta entregada por tu superior
+            Ingresa con la cuenta entregada
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -85,7 +84,7 @@ export function LoginForm({
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="m@example.com" {...field} />
+                        <Input placeholder="user@empresa.com" {...field} />
                       </FormControl>
                        <FormMessage />
                       </FormItem>
@@ -115,7 +114,7 @@ export function LoginForm({
                       href="#"
                       className="ml-auto text-sm underline-offset-4 hover:underline"
                     >
-                      Forgot your password?
+                      ¿Olvidaste tu contraseña?
                     </a>
                   </div>
 
@@ -123,12 +122,6 @@ export function LoginForm({
                 <Button type="submit" className="w-full">
                   Login
                 </Button>
-              </div>
-              <div className="text-center text-sm">
-                Don&apos;t have an account?{" "}
-                <a href="#" className="underline underline-offset-4">
-                  Sign up
-                </a>
               </div>
             </div>
           </form>
