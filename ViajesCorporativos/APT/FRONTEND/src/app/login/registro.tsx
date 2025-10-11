@@ -162,7 +162,7 @@ export default function NeoTravelFlowLogin({ brand = "NeoTravelFlow Portal", onS
 
             {/* Fine print */}
             <p className="mt-4 text-center text-xs text-slate-400">
-              © {new Date().getFullYear()} NeoTravelFlow. Todos los derechos reservados.
+              © {new Date().getFullYear()} NeoTravelFlow. Todos los derechos reservados.wwawawaw
             </p>
           </div>
         </div>
