@@ -2,7 +2,7 @@
 import {zodResolver} from "@hookform/resolvers/zod"
 import {useForm} from "react-hook-form"
 import React from "react";
-import { User, Lock, Eye, EyeOff, LogIn, ClipboardCheck } from "lucide-react";
+import { User, Lock } from "lucide-react";
 import {email, success, z} from "zod"
 import {signIn} from "@/src/server/users"
 import { useRouter } from "next/navigation";
