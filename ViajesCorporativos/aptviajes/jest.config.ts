@@ -1,15 +1,25 @@
-import type {Config} from "jest"
-import nextJest from "next/jest.js"
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
 
-const createJestConfig=nextJest({
-dir: './'
-})
-const config: Config={
-  coverageProvider:'v8',
-  testEnvironment:"jsdom",
-  preset:'ts-jest',
-  setupFilesAfterEnv:['./jest.setup.ts']
-}
-export default createJestConfig(config)
+  // Asegura que Jest transforme también los módulos ESM de estas dependencias
+  transformIgnorePatterns: [
+    '/node_modules/(?!(better-auth|@noble|jose)/)',
+  ],
 
-//Archivo de configuracion de pruebas unitarias
+  // Opcional: mejora el rendimiento al limpiar el caché de Jest
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
+
+  // Si usas imports con alias, puedes agregarlos aquí
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1',
+  },
+  
+  transform: {
+  '^.+\\.(t|j)sx?$': ['@swc/jest'],
+  },
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+
+};
+//life is pain
