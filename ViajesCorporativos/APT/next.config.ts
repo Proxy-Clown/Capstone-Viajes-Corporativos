@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: undefined, // o "standalone" si luego quieres empaquetar el build
 };
 
 export default nextConfig;
