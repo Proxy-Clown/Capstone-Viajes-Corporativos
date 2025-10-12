@@ -74,3 +74,9 @@ export const verification = sqliteTable("verification", {
     .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
 });
+export const  viajes=sqliteTable("viajes",{
+  id: text("id").primaryKey(),
+  salida: text(""),
+  destino:text(""),
+  motivo:text("")
+})
