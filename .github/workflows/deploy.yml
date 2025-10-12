@@ -7,23 +7,23 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Upload project to cPanel via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: .
+          local-dir: ./ViajesCorporativos/APT
           server-dir: /home/xutsrmxo/apps/NeoTravelFlow/
+          # Si da problema de conexión, cambia a: protocol: ftp
+          protocol: ftps
           exclude: |
-            **/.git*
+            **/.git/**
+            **/.github/**
             **/node_modules/**
             **/.next/**
             **/.vscode/**
-
-
