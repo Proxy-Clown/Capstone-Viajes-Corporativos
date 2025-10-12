@@ -17,10 +17,9 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./ViajesCorporativos/APT
-          server-dir: /home/xutsrmxo/apps/NeoTravelFlow/
-          # Si da problema de conexión, cambia a: protocol: ftp
           protocol: ftps
+          local-dir: ./ViajesCorporativos/APT/    
+          server-dir: /home/xutsrmxo/apps/NeoTravelFlow/
           exclude: |
             **/.git/**
             **/.github/**
