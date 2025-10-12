@@ -14,11 +14,12 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_HOST }}         # ej: svbh8910.banahosting.com
+          username: ${{ secrets.FTP_USERNAME }}   # ej: deploy@proxyportfolio.space
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: ./ViajesCorporativos/APT/    
+          protocol: ftp                           # <<< usar ftp
+          port: 21                                # <<< puerto estándar ftp
+          local-dir: ./ViajesCorporativos/APT/    # carpeta de tu app
           server-dir: /home/xutsrmxo/apps/NeoTravelFlow/
           exclude: |
             **/.git/**
