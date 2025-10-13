@@ -2,7 +2,7 @@
 
 import { zodResolver} from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { cn } from "@/lib/utils"
+import { cn } from "@/src/lib/utils"
 import { Button } from "./ui/button"
 import {
   Card,
@@ -20,7 +20,7 @@ import{
   FormLabel,
   FormMessage,
 } from "./ui/form"
-import { signIn } from "@/server/users"
+import { signIn } from "@/src/server/users"
 
 import {z} from "zod"
 import { toast } from "sonner";

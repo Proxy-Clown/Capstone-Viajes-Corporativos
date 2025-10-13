@@ -15,6 +15,13 @@
       "when": 1760303588481,
       "tag": "0001_typical_giant_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1760384194901,
+      "tag": "0002_dark_silk_fever",
+      "breakpoints": true
     }
   ]
 }
