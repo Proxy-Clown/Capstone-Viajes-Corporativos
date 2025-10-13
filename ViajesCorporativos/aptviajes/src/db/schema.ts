@@ -76,7 +76,11 @@ export const verification = sqliteTable("verification", {
 });
 export const  viajes=sqliteTable("viajes",{
   id: text("id").primaryKey(),
-  salida: text(""),
-  destino:text(""),
-  motivo:text("")
+  userid:text("user_id").notNull().references(()=>user.id,{onDelete:"cascade"}),
+  origen: text("origen").notNull(),
+  destino:text("destino").notNull(),
+  fechasalida:integer("fechasalida",{mode: "timestamp_ms"}).notNull(),
+  fecharetorno:integer("fecharetorno",{mode:"timestamp_ms"}).notNull(),
+  motivo:text("motivo").notNull(),
+  estado:text("estado").notNull()
 })

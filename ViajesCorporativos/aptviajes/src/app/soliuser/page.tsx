@@ -33,7 +33,7 @@ const tripSchema = z.object({
   startDate: z.string().min(1, "Selecciona fecha de salida"),
   endDate: z.string().min(1, "Selecciona fecha de retorno"),
   reason: z.string().min(5, "Describe el motivo (mín. 5 caracteres)"),
-  costCenter: z.string().min(1, "Centro de costo requerido"),
+  
   attachment: z.any().optional(),
 });
 
@@ -140,7 +140,6 @@ export function TravelRequestScreen({ currentRole }: { currentRole: Role }) {
       startDate: "",
       endDate: "",
       reason: "",
-      costCenter: "",
       attachment: undefined,
     },
     mode: "onChange",
@@ -292,17 +291,7 @@ export function TravelRequestScreen({ currentRole }: { currentRole: Role }) {
                     )}
                   </Field>
 
-                  <Field id="costCenter" label="Centro de costo">
-                    <Input
-                      id="costCenter"
-                      placeholder="Ej: CC-VENTAS-001"
-                      {...form.register("costCenter")}
-                      disabled={request.status !== ApprovalStatus.DRAFT || currentRole !== "employee"}
-                    />
-                    {form.formState.errors.costCenter && (
-                      <p className="text-xs text-red-600">{form.formState.errors.costCenter.message}</p>
-                    )}
-                  </Field>
+                  
                 </div>
 
                 <Field id="reason" label="Motivo del viaje">
@@ -406,7 +395,7 @@ export function TravelRequestScreen({ currentRole }: { currentRole: Role }) {
                     <li><span className="text-gray-500">Destino:</span> {request.payload.destination}</li>
                     <li><span className="text-gray-500">Salida:</span> {request.payload.startDate}</li>
                     <li><span className="text-gray-500">Retorno:</span> {request.payload.endDate}</li>
-                    <li><span className="text-gray-500">Centro de costo:</span> {request.payload.costCenter}</li>
+              
                   </ul>
                 ) : (
                   <div className="text-sm text-gray-500">Completa y envía el formulario para ver el resumen.</div>
