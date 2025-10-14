@@ -1,7 +1,17 @@
 
 import React from "react";
-
-export default function ColaboradorPanel() {
+import { auth } from "@/src/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+export default async function ColaboradorPanel() {
+  const session = await auth.api.getSession({ //GetSession: Revisa la session actual (AHORA FUNCIONAL)
+          headers: await headers()
+      })
+  
+      if(!session) {
+          redirect("/login")
+      }
+  
   return (
     <>
       <div className="shell">
@@ -34,7 +44,9 @@ export default function ColaboradorPanel() {
           <section className="card">
             <h3>Acciones rápidas</h3>
             <div className="quick" role="group" aria-label="Accesos directos">
+              <a href="/soliuser">
               <button className="btn primary">Nueva solicitud de viaje</button>
+              </a>
               <button className="btn">Cargar comprobante</button>
               <button className="btn">Ver políticas</button>
             </div>

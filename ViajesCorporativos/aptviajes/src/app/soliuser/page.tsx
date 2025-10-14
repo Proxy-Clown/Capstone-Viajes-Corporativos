@@ -1,17 +1,14 @@
 "use client";
-
 import * as React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { tripSchema, type TripFormdb } from "@/src/lib/schemas/tripSchema";
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card";
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import { Label } from "@/src/components/ui/label";
-
 // Icons
 import { Plane, Send, CheckCircle2, CircleDashed, XCircle, Calendar, MapPin } from "lucide-react";
 
@@ -26,10 +23,6 @@ enum ApprovalStatus {
   FINANCE_APPROVED = "FINANCE_APPROVED",
   FINANCE_REJECTED = "FINANCE_REJECTED",
 }
-
-
-
-
 
 type Approver = {
   role: Role;
@@ -61,7 +54,6 @@ function StatusPill({ status }: { status: ApprovalStatus }) {
   const it = map[status];
   return <span className={`px-2 py-1 rounded-md text-xs font-medium ${it.cls}`}>{it.label}</span>;
 }
-
 function Step({
   active,
   done,
@@ -100,12 +92,7 @@ function Step({
   );
 }
 
-// Simulación de API
-function fakeApiDelay<T>(result: T, ms = 600): Promise<T> {
-  return new Promise((resolve) => setTimeout(() => resolve(result), ms));
-}
-
-export default function TravelRequestPage() {
+export default  function TravelRequestPage() {
   return <TravelRequestScreen currentRole="employee" />;
 }
 
@@ -207,8 +194,6 @@ const Field = ({ id, label, children }: { id: string; label: string; children: R
       {children}
     </div>
   );
-
-
   return (
     <div className="bg-muted min-h-svh w-full flex items-start justify-center p-6 md:p-10">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -319,7 +304,7 @@ const Field = ({ id, label, children }: { id: string; label: string; children: R
                   
                 </div>
 
-                <Field id="reason" label="Motivo del viaje">
+                <label id="reason">
                   {/* usamos textarea nativa para no depender de shadcn/textarea */}
                   <textarea
                     id="reason"
@@ -332,7 +317,7 @@ const Field = ({ id, label, children }: { id: string; label: string; children: R
                   {form.formState.errors.reason && (
                     <p className="text-xs text-red-600">{form.formState.errors.reason.message}</p>
                   )}
-                </Field>
+                </label>
 
                 <Field id="attachment" label="Adjunto (opcional)">
                   <Input
