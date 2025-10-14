@@ -76,14 +76,11 @@ export const verification = sqliteTable("verification", {
 });
 export const viajes = sqliteTable("viajes", {
   id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-  userId: text("user_id")
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
+  origin:text("origin").notNull(),
   destination: text("destination").notNull(),
   departureDate: integer("departure_date", { mode: "timestamp_ms" }).notNull(),
   returnDate: integer("return_date",{mode: "timestamp_ms" }).notNull(),
   motive:text("motive").notNull(),
-  
   status: text("status", { enum: ['PENDING', 'APPROVED', 'REJECTED'] }).default('PENDING').notNull(),
   createdAt: integer("created_at", { mode: "timestamp_ms" })
     .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { tripSchema, type TripFormdb } from "@/src/lib/schemas/tripSchema";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card";
 import { Button } from "@/src/components/ui/button";
@@ -27,17 +27,9 @@ enum ApprovalStatus {
   FINANCE_REJECTED = "FINANCE_REJECTED",
 }
 
-const tripSchema = z.object({
-  origin: z.string().min(2, "Ingresa el origen"),
-  destination: z.string().min(2, "Ingresa el destino"),
-  startDate: z.string().min(1, "Selecciona fecha de salida"),
-  endDate: z.string().min(1, "Selecciona fecha de retorno"),
-  reason: z.string().min(5, "Describe el motivo (mín. 5 caracteres)"),
-  
-  attachment: z.any().optional(),
-});
 
-type TripForm = z.infer<typeof tripSchema>;
+
+
 
 type Approver = {
   role: Role;
@@ -53,7 +45,7 @@ type TravelRequest = {
   employeeName: string;
   createdAt: string;
   approvers: Approver[];
-  payload: TripForm | null;
+  payload: TripFormdb | null;
 };
 
 // --- Helpers visuales ---
@@ -132,7 +124,7 @@ export function TravelRequestScreen({ currentRole }: { currentRole: Role }) {
     payload: null,
   });
 
-  const form = useForm<TripForm>({
+  const form = useForm<TripFormdb>({
     resolver: zodResolver(tripSchema),
     defaultValues: {
       origin: "",
@@ -159,9 +151,23 @@ export function TravelRequestScreen({ currentRole }: { currentRole: Role }) {
     loading;
 
   const onSubmit = form.handleSubmit(async (data) => {
-    if (!datesOk) return;
-    setLoading(true);
-    const updated = await fakeApiDelay<TravelRequest>({
+  if (!datesOk) return;
+  setLoading(true);
+
+  try {
+    // send to database
+    const res = await fetch("/api/viajes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`HTTP error! status: ${res.status}, body: ${text}`);
+    }
+    // update local state to simulate approval workflow
+    const updated: TravelRequest = {
       ...request,
       status: ApprovalStatus.SUBMITTED,
       payload: data,
@@ -170,12 +176,30 @@ export function TravelRequestScreen({ currentRole }: { currentRole: Role }) {
           ? { ...a, decision: "approved", date: new Date().toISOString(), notes: "Solicitud enviada" }
           : a
       ),
-    });
+    };
     setRequest(updated);
+  } catch (error) {
+    console.error(error);
+    // Replace placeholder with:
+    let msg = "Error al enviar la solicitud";
+    if (error instanceof Error) {
+      msg = `Error al enviar la solicitud: ${error.message}`;
+    } else if (typeof error === "string") {
+      msg = `Error al enviar la solicitud: ${error}`;
+    } else {
+      try {
+        msg = `Error al enviar la solicitud: ${JSON.stringify(error)}`;
+      } catch {
+        // keep generic message
+      }
+    }
+    alert(msg);
+    console.error(error);
+  } finally {
     setLoading(false);
-  });
-
-  const Field = ({ id, label, children }: { id: string; label: string; children: React.ReactNode }) => (
+  }
+});
+const Field = ({ id, label, children }: { id: string; label: string; children: React.ReactNode }) => (
     <div className="grid gap-1.5">
       <Label htmlFor={id} className="text-gray-700">
         {label}
@@ -183,6 +207,7 @@ export function TravelRequestScreen({ currentRole }: { currentRole: Role }) {
       {children}
     </div>
   );
+
 
   return (
     <div className="bg-muted min-h-svh w-full flex items-start justify-center p-6 md:p-10">
