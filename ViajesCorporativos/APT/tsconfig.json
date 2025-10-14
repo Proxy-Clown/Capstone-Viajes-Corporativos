@@ -18,10 +18,11 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",  
-    "paths": {
-      "@/*": ["./*"]
-    }
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["src/*"]
+  }
+
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.js", "babel.config.js"],
   "exclude": ["node_modules"]
