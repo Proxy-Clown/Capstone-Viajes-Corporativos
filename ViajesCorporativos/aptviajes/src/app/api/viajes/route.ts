@@ -1,5 +1,4 @@
-import { NextResponse } from "next/server"; // Use NextResponse for sending responses
-// The rest of your imports are correct
+import { NextResponse } from "next/server"; 
 import { db } from "@/src/db";
 import { viajes } from "@/src/db/schema";
 import { tripSchema, type TripFormdb } from "@/src/lib/schemas/tripSchema";
@@ -19,9 +18,8 @@ export async function POST(request: Request) {
         const viajeData: ViajeInsert = {
             origin: validated.origin,
             destination: validated.destination,
-            // Convert to Date objects before inserting into Drizzle
-            departureDate: new Date(validated.startDate),
-            returnDate: new Date(validated.endDate),
+            departureDate:validated.startDate,
+            returnDate: validated.endDate,
             motive: validated.reason,
             status: "PENDING", 
         };

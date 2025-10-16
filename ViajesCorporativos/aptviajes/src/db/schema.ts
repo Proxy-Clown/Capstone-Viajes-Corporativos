@@ -78,8 +78,8 @@ export const viajes = sqliteTable("viajes", {
   id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
   origin:text("origin").notNull(),
   destination: text("destination").notNull(),
-  departureDate: integer("departure_date", { mode: "timestamp_ms" }).notNull(),
-  returnDate: integer("return_date",{mode: "timestamp_ms" }).notNull(),
+  departureDate: text("departure_date").notNull(),
+  returnDate: text("return_date").notNull(),
   motive:text("motive").notNull(),
   status: text("status", { enum: ['PENDING', 'APPROVED', 'REJECTED'] }).default('PENDING').notNull(),
   createdAt: integer("created_at", { mode: "timestamp_ms" })

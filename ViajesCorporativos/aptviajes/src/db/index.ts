@@ -6,3 +6,7 @@ const sqlite = new Database('sqlite.db');
 export const db = drizzle(sqlite,{
 schema: {user,session,account,verification}
 });
+
+async function test1(){
+await db.select()
+}
