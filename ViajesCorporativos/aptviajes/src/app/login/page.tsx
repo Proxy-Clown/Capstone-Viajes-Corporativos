@@ -2,8 +2,8 @@
 
 import {zodResolver} from "@hookform/resolvers/zod"
 import {useForm} from "react-hook-form"
-import React from "react";
-import { User, Lock } from "lucide-react";
+import React,{useState} from "react";
+import { User, Lock, Eye, EyeOff, LogIn, ClipboardCheck} from "lucide-react";
 import {z} from "zod"
 import {signIn} from "@/src/server/users"
 import { useRouter } from "next/navigation";
@@ -35,9 +35,37 @@ export default function NeoTravelFlowLogin({
         console.log("RIP");
       }
     }
-    
-
-  
+    const [copiedKey, setCopiedKey] = useState<string | null>(null);
+    function CopyPill({ label, sublabel, value }: { label: string; sublabel: string; value: string }) {
+    const isCopied = copiedKey === value;
+    return (
+      <button
+        type="button"
+        onClick={async () => {
+          try {
+            await navigator.clipboard.writeText(value);
+            setCopiedKey(value);
+            setTimeout(() => setCopiedKey(null), 1200);
+          } catch (err) {
+            console.warn("Clipboard not available", err);
+          }
+        }}
+        className="group w-full flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 text-left transition hover:shadow-sm"
+      >
+        <div className="min-w-0">
+          <p className="text-sm font-medium text-slate-900 truncate">{label}</p>
+          <p className="text-xs text-slate-500 truncate">{sublabel}</p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-[11px] font-mono text-slate-500 tracking-wider bg-slate-50 border border-slate-200 rounded px-2 py-1">
+            {value}
+          </span>
+          <ClipboardCheck className={`h-4 w-4 transition ${isCopied ? "text-emerald-500" : "text-slate-400 group-hover:text-slate-600"}`} />
+        </div>
+      </button>
+    );
+  }
+   
 
   return (
     <div className="min-h-screen w-full bg-slate-50">
@@ -106,7 +134,7 @@ export default function NeoTravelFlowLogin({
                 <button
                   type="submit"
                   className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 disabled:opacity-60"
-                >Ingresar Sesion
+                >Iniciar Sesion
                 </button>
               </form>
 
@@ -123,7 +151,10 @@ export default function NeoTravelFlowLogin({
               </div>
 
               {/* Test users */}
-              
+               <div className="space-y-3">
+                <CopyPill label="Duoc" sublabel="UserDuoc" value="Duoc1234" />
+              </div>
+            
 
             {/* Fine print */}
             <p className="mt-4 text-center text-xs text-slate-400">

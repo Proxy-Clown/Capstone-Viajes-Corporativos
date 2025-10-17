@@ -1,17 +1,6 @@
 
 import React from "react";
-import { auth } from "@/src/lib/auth";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-export default async function ColaboradorPanel() {
-  const session = await auth.api.getSession({ //GetSession: Revisa la session actual (AHORA FUNCIONAL)
-          headers: await headers()
-      })
-  
-      if(!session) {
-          redirect("/login")
-      }
-  
+export default function ColaboradorPanel() {
   return (
     <>
       <div className="shell">

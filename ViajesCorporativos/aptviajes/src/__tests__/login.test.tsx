@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom"
 import React from "react"
 import {render,screen,waitFor} from "@testing-library/react"
-import NeoTravelFlowLogin from "../app/login/page"
+import NeoTravelFlowLogin from "@/src/app/login/page"
 import {userEvent} from "@testing-library/user-event"
 import { signIn } from "@/src/server/users";
 //TEST DE LOGIN CORRECTO
@@ -42,7 +42,7 @@ describe("NeoTravelFlowLogin",()=>{
     expect(passwordInput).toBeInTheDocument();
     expect(passwordInput).toHaveAttribute("type", "password");
 
-    const loginButton = screen.getByRole("button", { name: /Ingresar Sesion/i });
+    const loginButton = screen.getByRole("button", { name: /Iniciar Sesion/i });
     expect(loginButton).toBeInTheDocument();
     expect(loginButton).toBeEnabled();
     });
@@ -56,7 +56,7 @@ describe("NeoTravelFlowLogin",()=>{
     
     const emailInput = screen.getByPlaceholderText(/Ingresa tu correo/i);
     const passwordInput = screen.getByPlaceholderText(/Ingresa tu contraseña/i);
-    const loginButton = screen.getByRole("button", { name: /Ingresar Sesion/i });
+    const loginButton = screen.getByRole("button", { name: /Iniciar Sesion/i });
 
     
     await user.type(emailInput, TEST_EMAIL);
