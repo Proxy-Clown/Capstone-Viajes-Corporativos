@@ -29,3 +29,6 @@
 **Seguridad**
 
 * TLS extremo a extremo, CSP estricta, encriptación at-rest (KMS), rotación de credenciales, RBAC por módulo/acción, auditoría a nivel de dominio (solicitudes, aprobaciones, gastos, cambios de política).
+
+(se puede modificar)
+
