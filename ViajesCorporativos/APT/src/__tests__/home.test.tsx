@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import React from "react";
 import {render,screen,waitFor} from "@testing-library/react";
-import ColaboradorPanel from "@/src/app/home/page"
+import ColaboradorPanel from "@/src/app/Home/page"
 
 describe("ColaboradorPanel",()=>{
     beforeEach(()=>{
@@ -10,7 +10,7 @@ describe("ColaboradorPanel",()=>{
     it("¿Botones Funcionando?",()=>{
         render(<ColaboradorPanel/>);
         expect(
-            screen.getAllByRole("button")
+            screen.getAllByText("button")
         ).toBeInTheDocument();
     })
 })

@@ -1,6 +1,19 @@
-
+import {db} from "@/src/db/"
 import React from "react";
+import {viajes} from "@/src/db/schema"
+import {ViajeCard} from "@/src/components/ui/ViajeCard"
+const viaje3 = await db.select({id:viajes.id,
+  origen:viajes.origin,
+  destino:viajes.destination,
+  motivo: viajes.motive,
+  estado:viajes.status})
+  .from(viajes)
+
+
 export default function ColaboradorPanel() {
+  //Funcion de de historial de solicitudes VERSION 1
+  
+
   return (
     <>
       <div className="shell">
@@ -170,6 +183,13 @@ export default function ColaboradorPanel() {
             <button className="btn primary">Ver tutorial</button>
           </section>
         </aside>
+               <main className="min-h-screen bg-gray-50 flex flex-col items-center py-10 gap-6">
+                  {viaje3.length === 0 ? (
+                    <p className="text-gray-500">No trips found.</p>
+                 ) : (
+                    viaje3.map((v) => <ViajeCard key={v.id} viaje={v} />)
+                  )}
+                </main> 
       </div>
 
       
