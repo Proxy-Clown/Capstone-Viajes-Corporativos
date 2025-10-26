@@ -28,11 +28,21 @@ export const signIn = async(email: string, password: string) => {
 export const signUp = async () => {
     await auth.api.signUpEmail({
         body:{
-            email:"vice@test.com",
-            password:"password123",
-            name: "vicente"
+            email:"UserDuoc@test.com",
+            password:"Duoc1234",
+            name: "UserDuoc"
         }
     })
 }
 
 
+/*
+primeracuenta
+vice@test.com
+password123
+SEGUNDA CUENTA:
+UserDuoc
+Duoc1234
+
+
+*/

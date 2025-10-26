@@ -4,11 +4,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { tripSchema, type TripFormdb } from "@/src/lib/schemas/tripSchema";
+import { TripFormdb, tripSchema } from "@/src/lib/schemas/tripform";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card";
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import { Label } from "@/src/components/ui/label";
+
+
 // Icons
 import { Plane, Send, CheckCircle2, CircleDashed, XCircle, Calendar, MapPin } from "lucide-react";
 

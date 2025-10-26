@@ -76,6 +76,9 @@ export const verification = sqliteTable("verification", {
 });
 export const viajes = sqliteTable("viajes", {
   id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
+  userId: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
   origin:text("origin").notNull(),
   destination: text("destination").notNull(),
   departureDate: text("departure_date").notNull(),

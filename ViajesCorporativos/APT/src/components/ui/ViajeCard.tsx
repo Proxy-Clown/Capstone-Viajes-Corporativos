@@ -4,6 +4,7 @@ export interface Viaje {
   destino: string;
   motivo:string;
   estado: "PENDING" | "APPROVED" | "REJECTED";
+  nombreUsuario: string | null;
 }
 
 export function ViajeCard({ viaje }: { viaje: Viaje }) {
@@ -15,6 +16,9 @@ export function ViajeCard({ viaje }: { viaje: Viaje }) {
 
   return (
     <div className="max-w-md w-full bg-white shadow-sm rounded-2xl p-5 border border-gray-100 hover:shadow-md transition">
+      <p className="text-sm text-gray-500">
+            Solicitado por: <span className="font-medium text-gray-700">{viaje.nombreUsuario ?? "Desconocido"}</span>
+      </p>
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-lg font-semibold text-gray-800">
           {viaje.origen} → {viaje.destino}
