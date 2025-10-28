@@ -8,6 +8,55 @@
       "when": 1759777408907,
       "tag": "0000_unusual_vivisector",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1760303588481,
+      "tag": "0001_typical_giant_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1760384194901,
+      "tag": "0002_dark_silk_fever",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1760396051623,
+      "tag": "0003_gray_roulette",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1760396513140,
+      "tag": "0004_whole_edwin_jarvis",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1760642839253,
+      "tag": "0005_optimal_penance",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1760642903834,
+      "tag": "0006_burly_doorman",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1761510267291,
+      "tag": "0007_left_ben_grimm",
+      "breakpoints": true
     }
   ]
 }

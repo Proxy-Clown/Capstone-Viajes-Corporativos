@@ -1,7 +1,41 @@
 
+import { db } from "@/src/db";
+import { viajes, user } from "@/src/db/schema";
+import { eq } from "drizzle-orm";
+import { auth } from "@/src/lib/auth";
 import React from "react";
+import {ViajeCard,Viaje} from "@/src/components/ui/ViajeCard"
+import { headers } from "next/headers"; // Next.js App Router
 
-export default function ColaboradorPanel() {
+export default async function ColaboradorPanel() {
+  //Funcion de de historial de solicitudes VERSION 1
+  const rawHeaders =  await headers();
+const headersObj: Record<string, string> = Object.fromEntries([...rawHeaders]);
+
+// Convert ReadonlyHeaders to plain object
+rawHeaders.forEach((value, key) => {
+  headersObj[key] = value;
+});
+
+  const session = await auth.api.getSession({ headers: headersObj });
+
+if (!session?.user) 
+  return <p>No estás autenticado</p>;
+
+  const activeUserId = session.user.id;
+
+  const viajesData: Viaje[] = await db
+    .select({
+      id: viajes.id,
+      origen: viajes.origin,
+      destino: viajes.destination,
+      motivo: viajes.motive,
+      estado: viajes.status,
+      nombreUsuario: user.name,
+    })
+    .from(viajes)
+    .leftJoin(user, eq(viajes.userId, user.id))
+    .where(eq(viajes.userId, activeUserId));
   return (
     <>
       <div className="shell">
@@ -34,7 +68,9 @@ export default function ColaboradorPanel() {
           <section className="card">
             <h3>Acciones rápidas</h3>
             <div className="quick" role="group" aria-label="Accesos directos">
+              <a href="/soliuser">
               <button className="btn primary">Nueva solicitud de viaje</button>
+              </a>
               <button className="btn">Cargar comprobante</button>
               <button className="btn">Ver políticas</button>
             </div>
@@ -169,6 +205,13 @@ export default function ColaboradorPanel() {
             <button className="btn primary">Ver tutorial</button>
           </section>
         </aside>
+               <main className="min-h-screen bg-gray-50 flex flex-col items-center py-10 gap-6">
+                  {viajesData.length === 0 ? (
+                    <p className="text-gray-500">No trips found.</p>
+                 ) : (
+                    viajesData.map((v) => <ViajeCard key={v.id} viaje={v} />)
+                  )}
+                </main> 
       </div>
 
       
