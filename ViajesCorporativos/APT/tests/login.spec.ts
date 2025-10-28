@@ -19,7 +19,7 @@ test.describe('Login NeoTravelFlow', () => {
     await page.getByRole('button', { name: 'Ingresar Sesion' }).click();
     await page.waitForLoadState('networkidle') 
     // Esperar explícitamente a que la URL cambie a /Home
-    //await page.waitForURL('http://localhost:3000/Home', { timeout: 800000 });
+    await page.waitForURL('http://localhost:3000/Home', { timeout: 800000 });
     
     await expect(page.getByRole('heading', { name: 'Acciones rápidas' }))
     .toBeVisible({timeout: 15000});
@@ -27,6 +27,6 @@ test.describe('Login NeoTravelFlow', () => {
 
 });
 //Firefox = Pasan
-//WTF
+
 //Chromium = Pasan
-//Webit 
+ 
