@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"; 
 import { db } from "@/src/db";
 import { viajes,user } from "@/src/db/schema";
-import {tripSchema} from "@/src/lib/schemas/tripform"
+import { tripSchema } from "@/src/lib/schemas/tripform";
 import {auth} from "@/src/lib/auth"
 import {eq} from "drizzle-orm"
 export type ViajeInsert = typeof viajes.$inferInsert;
