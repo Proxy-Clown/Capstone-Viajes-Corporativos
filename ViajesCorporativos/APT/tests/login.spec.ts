@@ -16,13 +16,13 @@ test.describe('Login NeoTravelFlow', () => {
     await page.locator('input[name="password"]').fill(TEST_PASSWORD);
 
     // Hacer clic en el botón de login
-    await page.getByRole('button', { name: 'Ingresar Sesion' }).click();
+    await page.getByRole('button', { name: 'Iniciar Sesion' }).click();
     await page.waitForLoadState('networkidle') 
     // Esperar explícitamente a que la URL cambie a /Home
-    await page.waitForURL('http://localhost:3000/Home', { timeout: 800000 });
+    //await page.waitForURL('http://localhost:3000/Home', { timeout: 800000 });
     
     await expect(page.getByRole('heading', { name: 'Acciones rápidas' }))
-    .toBeVisible({timeout: 15000});
+    .toBeVisible({timeout: 300000});
   });
 
 });

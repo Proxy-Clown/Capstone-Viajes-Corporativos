@@ -3,12 +3,15 @@ import * as React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { TripFormdb,tripSchema } from "@/src/lib/schemas/tripform";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { tripSchema, type TripFormdb } from "@/src/lib/schemas/tripSchema";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card";
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import { Label } from "@/src/components/ui/label";
+
+
+
 // Icons
 import { Plane, Send, CheckCircle2, CircleDashed, XCircle, Calendar, MapPin } from "lucide-react";
 
@@ -194,6 +197,7 @@ const Field = ({ id, label, children }: { id: string; label: string; children: R
       {children}
     </div>
   );
+  //todos los labels renombrados con "Field tienen el error de escribir". 
   return (
     <div className="bg-muted min-h-svh w-full flex items-start justify-center p-6 md:p-10">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -241,6 +245,7 @@ const Field = ({ id, label, children }: { id: string; label: string; children: R
                         id="origin"
                         placeholder="Ej: Santiago, CL"
                         className="pl-9"
+                        
                         {...form.register("origin")}
                         disabled={request.status !== ApprovalStatus.DRAFT || currentRole !== "employee"}
                       />

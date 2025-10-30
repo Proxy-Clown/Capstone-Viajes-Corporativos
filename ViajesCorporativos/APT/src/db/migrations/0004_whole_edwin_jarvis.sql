@@ -1,1 +1,0 @@
-ALTER TABLE `viajes` ADD `origin` text NOT NULL;

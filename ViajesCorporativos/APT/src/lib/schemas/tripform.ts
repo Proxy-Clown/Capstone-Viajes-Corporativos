@@ -1,6 +1,4 @@
-import { z } from "zod";
-
-// The definition is the same, just moved here
+import {z} from "zod"
 export const tripSchema = z.object({
   origin: z.string().min(2, "Ingresa el origen"),
   destination: z.string().min(2, "Ingresa el destino"),
@@ -9,6 +7,4 @@ export const tripSchema = z.object({
   reason: z.string().min(5, "Describe el motivo (mín. 5 caracteres)"),
   attachment: z.any().optional(),
 });
-
-// Also export the type for convenience
 export type TripFormdb = z.infer<typeof tripSchema>; 
